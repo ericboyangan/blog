@@ -4,7 +4,7 @@ title:  "Eigenvectors from eigenvalues"
 date:   2019-12-02 08:00:00 -0800
 categories: math
 ---
-Here are my notes from trying to understand [this "short and simple" linear algebra result](https://www.theatlantic.com/science/archive/2019/11/neutrino-oscillations-lead-striking-mathematical-discovery/602128/) which made a few headlines in 2019 ([paper here, notes below will reference](https://arxiv.org/pdf/1908.03795.pdf)), sent to me by Juanhe (as so many other cool things are, thank you!!!)
+Here are my notes from trying to understand [this "short and simple" linear algebra result](https://arxiv.org/pdf/1908.03795.pdf) which made a few [headlines in 2019](https://www.theatlantic.com/science/archive/2019/11/neutrino-oscillations-lead-striking-mathematical-discovery/602128/), sent to me by Juanhe (as so many other cool things are, thank you!!!)
 
 The general thrust of the result is that simply knowing the eigenvalues of a Hermitian matrix \\(A\\) and its principal minors, you can construct its eigenvectors.
 
@@ -44,11 +44,11 @@ $$ AB = \begin{bmatrix} A'\beta_1' & \dots & A'\beta_{n-1}' \\ 0 & \dots & 0 \en
 $$
 \begin{aligned}
 \Rightarrow B^*AB & = \begin{bmatrix}\beta_1' & x_1 \\ \dots & \dots \\ \beta_{n-1}' & x_{n-1} \end{bmatrix} \begin{bmatrix} A'\beta_1' & \dots & A'\beta_{n-1}' \\ 0 & \dots & 0 \end{bmatrix} \\
-& = \begin{bmatrix} \beta_1'A'\beta_1' & \dots & \beta_1'A'\beta_{n-1}' \\ \dots & & \dots \\ \beta_{n-1}'A'\beta_1 & \dots & \beta_{n-1}'A'\beta_{n-1} \end{bmatrix}
+& = \begin{bmatrix} \beta_1'A'\beta_1' & \dots & \beta_1'A'\beta_{n-1}' \\ \dots & \dots & \dots \\ \beta_{n-1}'A'\beta_1 & \dots & \beta_{n-1}'A'\beta_{n-1} \end{bmatrix}
 \end{aligned}
 $$
 
-where the last row of the rightmost matrix being zero eliminates all of the \\(x_i\\) from the product. This last \\(n-1 \times n-1\\) matrix we recognize as simply the Gram-like inner product matrix:
+where the last row of the rightmost matrix being zero eliminates all of the \\(x_i\\) from the product. This last \\(n-1 \times n-1\\) matrix we recognize as simply the matrix of inner products:
 
 $$ B'^* A' B' $$
 
