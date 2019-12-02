@@ -3,16 +3,11 @@ layout: page
 title: About
 permalink: /about/
 ---
+Just a little place to jot down a few of my favorite things:
+* Puzzles, problems, and brainteasers, of the sort you might encounter during a fun, [but bad, job interview](https://www.newyorker.com/tech/annals-of-technology/why-brainteasers-dont-belong-in-job-interviews)
+* Notes from my occasional attempts to learn/re-learn some bit of mathematics
+* Helpful snippets of code / commands accrued through my career in engineering & data science
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Although the blog is primarily for my own benefit, hopefully its contents are also helpful or interesting to you!
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+The site is built with [Jekyll](https://jekyllrb.com/) and hosted via [GitHub Pages](https://pages.github.com/).
