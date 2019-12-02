@@ -4,9 +4,9 @@ title:  "Eigenvectors from eigenvalues"
 date:   2019-12-01 18:17:31 -0800
 categories: notes
 ---
-My notes while going through [this "surprising", "basic" linear algebra result](https://arxiv.org/pdf/1908.03795.pdf), found on Terrence Tao's blog and sent to me by Juanhe (as so many cool things are, thanks!!):
+My notes while going through [this "surprising", "basic" linear algebra result](https://arxiv.org/pdf/1908.03795.pdf), found on Terrence Tao's blog and sent to me by Juanhe (as so many other cool things are, thank you!!!):
 
-The general thrust of the result is that knowing the eigenvalues of a Hermitian matrix \\(A\\) and its principal minors, you can construct its eigenvalues.
+The general thrust of the result is that knowing the eigenvalues of a Hermitian matrix \\(A\\) and its principal minors, you can construct its eigenvectors.
 
 ### Lemma 1
 First, some clarifications on the notation in equation (1):
