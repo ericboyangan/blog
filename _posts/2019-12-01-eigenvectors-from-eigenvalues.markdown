@@ -9,11 +9,13 @@ Here are my notes from trying to understand [this "short and simple" linear alge
 The general thrust of the result is that simply knowing the eigenvalues of a Hermitian matrix \\(A\\) and its principal minors, you can construct its eigenvectors.
 
 ### Lemma 1
-First, some clarifications on the notation in equation (1):
-* The product on the LHS applies only to \\(\prod_{i=1}^{n-1}\lambda_i(A)\\)
-* \\(\det(B\ v_n)\\) denotes determinant of the \\(n\times n\\) matrix formed by augmenting the \\(n\times n-1\\) matrix \\(B\\) with the \\(n\times1\\) vector \\(v_n\\)
+The lemma asserts that for \\(\small n \times n\\) Hermitian \\(A\\) with eigenvalues \\(\lambda_i\\) and associated eigenvectors \\(v_i\\), and any \\(\small n \times n-1\\) matrix \\(B\\), we have:
 
-The proof begins by assuming \\(A\\) is diagonal, which by construction means:
+$$\left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det(B \mathbf{||} v_n)|^2 = \det(B^*AB)$$
+
+where \\(B \mathbf{\|\|} v_n\\) denotes the \\(\small n \times n\\) matrix formed by augmenting the \\(\small n \times n-1\\) matrix \\(B\\) with the \\(\small n \times1\\) vector \\(v_n\\).
+
+Begin by assuming \\(A\\) is diagonal, which by construction means:
 
 $$A = \begin{bmatrix}
     \lambda_{1}  \\
@@ -25,17 +27,17 @@ $$A = \begin{bmatrix}
 
 $$v_i = e_i, \forall i$$
 
-where \\(A'\\) is the upper-left diagonal \\(n − 1 \times n − 1\\) submatrix, we abbreviate \\(\lambda_i = \lambda_i(A)\\), and \\(e_i\\) is the standard basis vector with a \\(1\\) in the \\(i\\)th column and \\(0\\) elsewhere.
+where \\(A'\\) is the upper-left diagonal \\(\small n − 1 \times n − 1\\) submatrix and \\(e_i\\) is the standard basis vector with a \\(1\\) in the \\(i\\)th column and \\(0\\) elsewhere.
 
-Similarly, write \\(B = \begin{bmatrix} B' \\\\ X \end{bmatrix} = \begin{bmatrix} \beta_1' & \beta_2' & \dots & \beta_{n-1}' \\\\ x_1 & x_2 & \dots & x_{n-1} \end{bmatrix}\\) where \\(B'\\) is the upper \\(n − 1 \times n − 1\\) submatrix and \\(X\\) is the lower \\(1 \times n − 1\\) row vector, with each \\(\beta_i'\\) a \\(n-1 \times 1\\) column vector and \\(X = \begin{bmatrix}---x_i---\end{bmatrix}\\).
+Similarly, write \\(B = \begin{bmatrix} B' \\\\ X \end{bmatrix} = \begin{bmatrix} \beta_1' & \beta_2' & \dots & \beta_{n-1}' \\\\ x_1 & x_2 & \dots & x_{n-1} \end{bmatrix}\\) where \\(B'\\) is the upper \\(\small n − 1 \times n − 1\\) submatrix and \\(X\\) is the lower \\(\small 1 \times n − 1\\) row vector, with each \\(\beta_i'\\) a \\(\small n-1 \times 1\\) column vector and \\(X = \begin{bmatrix}---x_i---\end{bmatrix}\\).
 
 We have on the one hand that:
 
 $$ \det(B\ v_n) = \det( \begin{bmatrix} \Large B' & \Large 0 \\ \\ X & 1 \end{bmatrix} ) =  0 + 0 + \dots + \det B'$$
 
-$$ \Rightarrow \left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det(B\ v_n)|^2 = \left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det B'|^2 $$ 
+by considering the Laplace expansion along the last row (each submatrix but the last contains the \\(0\\)-vector on the top right, hence each cofactor but the last is also \\(0\\).), which implies:
 
-by considering the Laplace expansion along the last row (each submatrix but the last contains the \\(0\\)-vector on the top right, hence each cofactor but the last is also \\(0\\).)
+$$ \Rightarrow \left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det(B \mathbf{||} v_n)|^2 = \left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det B'|^2 $$ 
 
 On the other hand, note that since the last row and column of \\(A\\) is identically zero, we have:
 
@@ -48,7 +50,7 @@ $$
 \end{aligned}
 $$
 
-where the last row of the rightmost matrix being zero eliminates all of the \\(x_i\\) from the product. This last \\(n-1 \times n-1\\) matrix we recognize as simply the matrix of inner products:
+where the last row of the rightmost matrix being zero eliminates all of the \\(x_i\\) from the product. This last \\(\small n-1 \times n-1\\) matrix we recognize as simply the conjugation:
 
 $$ B'^* A' B' $$
 
@@ -57,3 +59,15 @@ and hence:
 $$ \det(B^* A B) = \det(B'^* A' B') = \det(A') |\det(B')|^2 = \left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det B'|^2$$
 
 as desired.
+
+To complete the lemma, when \\(A\\) is Hermitian we can take its [eigendecomposition](https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix) \\(A = VDV^\*\\) where \\(V = \begin{bmatrix} v_1 & \dots & v_n \end{bmatrix}\\) is orthogonal and formed of the eigenvectors \\(v_i\\) of \\(A\\), and \\(D\\) is the diagonal matrix of eigenvalues \\(\lambda_i\\). Then:
+
+$$
+\begin{aligned}
+\det(B^*AB) = \det(B^*VDV^*B) & = \left( \prod_{i=1}^{n-1}\lambda_i \right) |\det(V^*B \mathbf{||} e_n)|^2 \\
+& = \left( \prod_{i=1}^{n-1}\lambda_i \right) |\det(V^*B \mathbf{||} V^*v_n)|^2 \\
+& = \left( \prod_{i=1}^{n-1}\lambda_i \right) |\det(B \mathbf{||} v_n)|^2
+\end{aligned}
+$$
+
+where on the first line we use the diagonal case of the lemma, on the second we use the orthogonality of the rows \\(v_i\\) of \\(V^*\\), and on the third we extract \\(\det(V^\*) = 1\\) again by orthogonality.
