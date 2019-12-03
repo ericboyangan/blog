@@ -11,7 +11,7 @@ The general thrust of the result is that simply knowing the eigenvalues of a Her
 ### Lemma 1
 First, some clarifications on the notation in equation (1):
 * The product on the LHS applies only to \\(\prod_{i=1}^{n-1}\lambda_i(A)\\)
-* \\(\det(B\ v_n)\\) denotes determinant of the \\(n\times n\\) matrix formed by appending the \\(n\times1\\) vector \\(v_n\\) to the \\(n\times n-1\\) matrix \\(B\\)
+* \\(\det(B\ v_n)\\) denotes determinant of the \\(n\times n\\) matrix formed by augmenting the \\(n\times n-1\\) matrix \\(B\\) with the \\(n\times1\\) vector \\(v_n\\)
 
 The proof begins by assuming \\(A\\) is diagonal, which by construction means:
 
