@@ -1,15 +1,15 @@
 ---
 layout: post
 title:  "Eigenvectors from eigenvalues"
-date:   2019-12-02 08:00:00 -0800
+date:   2019-12-03 08:00:00 -0800
 categories: math
 ---
-Here are my notes from trying to understand [this "short and simple" linear algebra result](https://arxiv.org/pdf/1908.03795.pdf) which made a few [headlines in 2019](https://www.theatlantic.com/science/archive/2019/11/neutrino-oscillations-lead-striking-mathematical-discovery/602128/), sent to me by Juanhe (as so many other cool things are, thank you!!!)
+In this post I'll write up the notes I took while trying to follow [this "short and simple" linear algebra result](https://arxiv.org/pdf/1908.03795.pdf) which made a few [headlines in 2019](https://www.theatlantic.com/science/archive/2019/11/neutrino-oscillations-lead-striking-mathematical-discovery/602128/), sent to me by Juanhe (as so many other cool things are, thank you!)
 
 The general thrust of the result is that simply knowing the eigenvalues of a Hermitian matrix \\(A\\) and its principal minors, you can construct its eigenvectors.
 
 ### Lemma 1
-The lemma asserts that for \\(\small n \times n\\) Hermitian \\(A\\) with eigenvalues \\(\lambda_i\\) and associated eigenvectors \\(v_i\\), and any \\(\small n \times n-1\\) matrix \\(B\\), we have:
+The lemma asserts that for \\(\small n \times n\\) Hermitian \\(A\\) with eigenvalues \\(\lambda_i\\) and associated eigenvectors \\(v_i\\) with \\(\lambda_n=0\\) and any \\(\small n \times n-1\\) matrix \\(B\\), we have:
 
 $$\left( \prod_{i=1}^{n-1}\lambda_i(A) \right) |\det(B \mathbf{||} v_n)|^2 = \det(B^*AB)$$
 
@@ -33,7 +33,7 @@ Similarly, write \\(B = \begin{bmatrix} B' \\\\ X \end{bmatrix} = \begin{bmatrix
 
 We have on the one hand that:
 
-$$ \det(B\ v_n) = \det( \begin{bmatrix} \Large B' & \Large 0 \\ \\ X & 1 \end{bmatrix} ) =  0 + 0 + \dots + \det B'$$
+$$ \det(B\mathbf{||}v_n) = \det( \begin{bmatrix} \Large B' & \Large 0 \\ \\ X & 1 \end{bmatrix} ) =  0 + 0 + \dots + \det B'$$
 
 by considering the Laplace expansion along the last row (each submatrix but the last contains the \\(0\\)-vector on the top right, hence each cofactor but the last is also \\(0\\).), which implies:
 
