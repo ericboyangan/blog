@@ -86,7 +86,7 @@ $$ |v_{i,j}|^2 \prod_{k=1, k\neq i}^{n} \lambda_k' = \prod_{k=1}^{n-1} \mu_k' $$
 Our new matrix \\(A'\\) has \\(\lambda_k' = 0\\) so we may apply the Lemma with \\(B\\) the \\(\small n \times n-1\\) matrix:
 
 $$
-B_{u,v} = \begin{cases} 1 & u < j, u = v \\ 1 & u > j, u = v + 1 \\ 0 & \text{otherwise} \end{cases}
+b_{u,v} = \begin{cases} 1 & u < j, u = v \\ 1 & u > j, u = v + 1 \\ 0 & \text{otherwise} \end{cases}
 \qquad \longrightarrow \qquad
 B = \begin{bmatrix}
 1 \\
