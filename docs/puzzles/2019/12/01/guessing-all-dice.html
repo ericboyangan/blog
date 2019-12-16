@@ -53,6 +53,27 @@
 <h3 id="puzzle-guessing-all-dice">Puzzle: Guessing all dice</h3>
 <p>\(100\) statisticians will play a game in which each simultaneously rolls a fair \(6\)-sided dice, but each sees only the result of the \(99\) other dice rolls (and not their own). Simultaneously and without further communication, each guesses their own roll, and the group wins iff every guess is correct. What strategy maximizes the group’s chance of success (and what is that chance)?</p>
 
+<details>
+    <summary>A hint
+</summary>
+    
+<p>In the 2-statistician case, randomly guessing yields a \(\tfrac{1}{36}\) chance of success, as each player’s individual chances are independent. Is there a way they could more closely correlate their chances, so that when one is right the other is more likely to also be right?</p>
+
+</details>
+
+<details>
+    <summary>A solution
+</summary>
+    
+<p>Astonishingly, regardless of how many statisticians there are, the group can win with probability \(\tfrac{1}{6}\)!</p>
+
+<p>A simple strategy that does this: all of the statisticians agree to guess a number for their own dice which results in a sum congruent to \(0\) modulo \(6\), an event which occurs with probability \(\tfrac{1}{6}\). When one is right/wrong, they all are!</p>
+
+<p>We can see that this probability is maximal since the group’s success entails any individual success, so its probability is upper-bounded by \(\tfrac{1}{6}\).</p>
+
+</details>
+
+
   </div><a class="u-url" href="/blog/puzzles/2019/12/01/guessing-all-dice.html" hidden></a>
 </article>
 
