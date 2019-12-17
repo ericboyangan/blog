@@ -3,6 +3,7 @@ layout: post
 title:  "Eigenvectors from eigenvalues"
 date:   2019-12-05 08:00:00 -0800
 categories: math
+comments: true
 ---
 In this post I'll write up the notes I took while trying to follow [this "short and simple" linear algebra result](https://arxiv.org/pdf/1908.03795.pdf) which made a few [headlines in 2019](https://www.theatlantic.com/science/archive/2019/11/neutrino-oscillations-lead-striking-mathematical-discovery/602128/), sent to me by Juanhe (as so many other cool things are, thank you!)
 
