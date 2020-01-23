@@ -8,7 +8,7 @@ comments: true
 Happy New Year! Today's puzzle is courtesy of Juanhe again. Hope you like it!
 
 ### Puzzle: Pick the larger number!
-I (somewhow) write two real numbers on slips of paper which I present to you facedown. You choose one at random and, looking at the number, get the option to switch. The goal is to end up with the larger written number.
+I (somehow) write two real numbers on slips of paper which I present to you facedown. You choose one at random and, looking at the number, get the option to switch. The goal is to end up with the larger written number.
 
 Does there exist a strategy that does better than 50%?
 
