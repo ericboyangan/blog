@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Guessing all dice | A leaky bucket</title>
+<title>Pick the larger number! | A leaky bucket</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Guessing all dice" />
+<meta property="og:title" content="Pick the larger number!" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Welcome to the blog! I’ve yet to figure out most things here, but preliminarily I hope to use it to compile three categories of things I delight in occasionally coming across: puzzles/brainteasers, little snippets of math, and (aspirationally) creative writing. I’ll expound on these in a forthcoming “About” section, but for now, enjoy one of my all-time favorite probability puzzles!" />
-<meta property="og:description" content="Welcome to the blog! I’ve yet to figure out most things here, but preliminarily I hope to use it to compile three categories of things I delight in occasionally coming across: puzzles/brainteasers, little snippets of math, and (aspirationally) creative writing. I’ll expound on these in a forthcoming “About” section, but for now, enjoy one of my all-time favorite probability puzzles!" />
-<link rel="canonical" href="https://ericboyangan.github.io/blog/puzzles/2019/12/01/guessing-all-dice.html" />
-<meta property="og:url" content="https://ericboyangan.github.io/blog/puzzles/2019/12/01/guessing-all-dice.html" />
+<meta name="description" content="Happy New Year! Today’s puzzle is courtesy of Juanhe again. Hope you like it!" />
+<meta property="og:description" content="Happy New Year! Today’s puzzle is courtesy of Juanhe again. Hope you like it!" />
+<link rel="canonical" href="https://ericboyangan.github.io/blog/puzzles/2020/01/23/pick-the-larger-number.html" />
+<meta property="og:url" content="https://ericboyangan.github.io/blog/puzzles/2020/01/23/pick-the-larger-number.html" />
 <meta property="og:site_name" content="A leaky bucket" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-12-01T12:00:00-08:00" />
+<meta property="article:published_time" content="2020-01-23T11:30:00-08:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ericboyangan.github.io/blog/puzzles/2019/12/01/guessing-all-dice.html"},"url":"https://ericboyangan.github.io/blog/puzzles/2019/12/01/guessing-all-dice.html","headline":"Guessing all dice","dateModified":"2019-12-01T12:00:00-08:00","datePublished":"2019-12-01T12:00:00-08:00","description":"Welcome to the blog! I’ve yet to figure out most things here, but preliminarily I hope to use it to compile three categories of things I delight in occasionally coming across: puzzles/brainteasers, little snippets of math, and (aspirationally) creative writing. I’ll expound on these in a forthcoming “About” section, but for now, enjoy one of my all-time favorite probability puzzles!","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ericboyangan.github.io/blog/puzzles/2020/01/23/pick-the-larger-number.html"},"url":"https://ericboyangan.github.io/blog/puzzles/2020/01/23/pick-the-larger-number.html","headline":"Pick the larger number!","dateModified":"2020-01-23T11:30:00-08:00","datePublished":"2020-01-23T11:30:00-08:00","description":"Happy New Year! Today’s puzzle is courtesy of Juanhe again. Hope you like it!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://ericboyangan.github.io/blog/feed.xml" title="A leaky bucket" /></head>
 <body><header class="site-header" role="banner">
@@ -38,9 +38,9 @@
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Guessing all dice</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Pick the larger number!</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2019-12-01T12:00:00-08:00" itemprop="datePublished">Dec 1, 2019
+      <time class="dt-published" datetime="2020-01-23T11:30:00-08:00" itemprop="datePublished">Jan 23, 2020
       </time></p>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
       <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
@@ -48,28 +48,22 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>Welcome to the blog! I’ve yet to figure out most things here, but preliminarily I hope to use it to compile three categories of things I delight in occasionally coming across: puzzles/brainteasers, little snippets of math, and (aspirationally) creative writing. I’ll expound on these in a forthcoming <a href="/blog/about/">“About” section</a>, but for now, enjoy one of my all-time favorite probability puzzles!</p>
+    <p>Happy New Year! Today’s puzzle is courtesy of Juanhe again. Hope you like it!</p>
 
-<h3 id="puzzle-guessing-all-dice">Puzzle: Guessing all dice</h3>
-<p>\(100\) statisticians will play a game in which each simultaneously rolls a fair \(6\)-sided dice, but each sees only the result of the \(99\) other dice rolls (and not their own). Simultaneously and without further communication, each guesses their own roll, and the group wins iff every guess is correct. What strategy maximizes the group’s chance of success (and what is that chance)?</p>
+<h3 id="puzzle-pick-the-larger-number">Puzzle: Pick the larger number!</h3>
+<p>I (somewhow) write two real numbers on slips of paper which I present to you facedown. You choose one at random and, looking at the number, get the option to switch. The goal is to end up with the larger written number.</p>
 
-<details>
-    <summary>A hint
-</summary>
-    
-<p>In the 2-statistician case, randomly guessing yields a \(\tfrac{1}{36}\) chance of success, as each player’s individual chances are independent. Is there a way they could more closely correlate their chances, so that when one is right the other is more likely to also be right?</p>
-
-</details>
+<p>Does there exist a strategy that does better than 50%?</p>
 
 <details>
     <summary>A solution
 </summary>
     
-<p>Astonishingly, regardless of how many statisticians there are, the group can win with probability \(\tfrac{1}{6}\)!</p>
+<p>Indeed there is! Consider the following strategy: draw from a standard Gaussian (or <em>any</em> distribution with support over the reals), a random number \(x\). Then whatever number is revealed, simply compare it to \(x\)! If \(x\) is larger, switch.</p>
 
-<p>A simple strategy that does this: all of the statisticians agree to guess a number for their own dice which results in a sum congruent to \(0\) modulo \(6\), an event which occurs with probability \(\tfrac{1}{6}\). When one is right/wrong, they all are!</p>
+<p>How does it work? In the case where both written numbers are larger than \(x\), then the strategy does the right thing exactly when you have chosen the larger written number to begin with, which occurs with probability 50%. Similarly, the strategy wins with 50% probability when both written numbers are smaller than \(x\). However, in the event that \(x\) is between the two written numbers, the strategy is guaranteed to win!</p>
 
-<p>We can see that this probability is maximal since the group’s success entails any individual success, so its probability is upper-bounded by \(\tfrac{1}{6}\).</p>
+<p>Hence as long as your distribution for \(x\) contains positive support over every interval, there’s nothing I can do to prevent you from winning with strictly better than 50% probability!</p>
 
 </details>
 
@@ -94,7 +88,7 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a class="u-url" href="/blog/puzzles/2019/12/01/guessing-all-dice.html" hidden></a>
+<a class="u-url" href="/blog/puzzles/2020/01/23/pick-the-larger-number.html" hidden></a>
 </article>
 
       </div>
