@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Eigenvectors from eigenvalues"
-date:   2019-12-05 08:00:00 -0800
+title: "Eigenvectors from eigenvalues"
+date: 2019-12-05 08:00:00 -0800
 categories: math
 comments: true
 ---
