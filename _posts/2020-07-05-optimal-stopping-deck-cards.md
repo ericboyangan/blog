@@ -56,16 +56,19 @@ The log-log plot is pretty close to linear with slope approaching what looks to 
 ((ln_y[:-1] - ln_y[1:]) / (ln_x[:-1] - ln_x[1:]))[-5:]
 # array([0.50080497, 0.50080423, 0.50080348, 0.50080275, 0.50080202])
 ```
-
+and intercept roughly:
+```
+np.exp(ln_y[-1] - ln_x[-1] * (ln_y[-1] - ln_y[-2]) / (ln_x[-1] - ln_x[-2]))
+# 0.518562756949232
+```
 so that we may guess that in the limit:
 
-$$\lim_{m\rightarrow\infty}\frac{V(m, m)}{\sqrt{m}} = V$$
+$$\lim_{m\rightarrow\infty}\frac{V(m, m)}{\sqrt{m}} = V \approx 0.52$$
 
 # A sketched proof
 In the rest of this post, we'll present a rough proof (and determine the precise value of \\(V\\)).
 
 #### The Brownian Bridge
-
 First, we must invoke the stochastic process known as the [Brownian Bridge](https://en.wikipedia.org/wiki/Brownian_bridge), which is loosely the [standard Wiener process](https://en.wikipedia.org/wiki/Wiener_process) "tied down" to be 0 at both \\(t=0\\) and \\(t=1\\). That is, with \\(W(t), t\geq0\\) the standard Wiener process with independent normal increments \\(W(t) - W(s) \sim \mathcal{N}(0, t-s)\\), define the standard Brownian Bridge \\(B(t), t\in[0, 1]\\) to be the unique Gaussian process with mean \\(\mathop{\mathbf{E}}B(t) = 0\\) and covariance \\(\mathbf{Cov}[B(s),B(t)] = s(1- t)\\) for \\(s \leq t\\).
 
 As it turns out, in the limit, our process \\(S_i^{(m)}, i\in(0, 1, 2, \dots, 2m)\\) of total current winnings after drawing \\(i\\) cards through a deck of \\(2m\\) cards, is just a time and space scaled Brownian Bridge, in the sense:
@@ -97,8 +100,7 @@ However, it remains to be shown that limiting process is Gaussian, perhaps using
 More formally, I think one can demonstrate the equivalence to a Brownian Bridge by noting that our process \\(S_i^{(m)}\\) has the same distribution as a [simple random walk](https://en.wikipedia.org/wiki/Random_walk#One-dimensional_random_walk) over \\(\mathcal{Z}^1\\), *conditioned* to be \\(0\\) at \\(2m\\); from there, [Donsker's invariance principle](https://en.wikipedia.org/wiki/Donsker%27s_theorem) can be applied to show that the rescaled random walk converges in law to Brownian motion.
 
 #### The optimal stopping time
-
- We will now follow along with Shepp's proof in Sections 1, 2, 3, and 6 of [^1], which goes roughly as follows:
+We will now follow along with Shepp's proof in Sections 1, 2, 3, and 6 of [^1], which goes roughly as follows:
 
 With \\(W(t)\\) a standard Wiener process, and fixed real constants \\(u, b\\) with \\(-\infty < u < \infty, b > 0\\), let \\(T\\) range over all possible stopping times for this process (i.e. strategies to choose a time \\(t \geq 0\\) that is non-anticipating[^2]) and consider the new (seemingly arbitrary) objective:
 
@@ -142,7 +144,7 @@ $$
 
 where on the first line we have multiplied through by \\(c e^{\lambda u - \frac{\lambda^2 b}{2}}\\), integrated over \\(\lambda\\), and interchanged integrals; on the second line we have made the change of variables \\(\lambda\sqrt{b + t} = y\\) on the LHS, and split the independent integrals; on the third line we apply the ["law of the unconscious statistician"](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician); and on the fourth we note that by the definition of \\(\tau_c\\) we have precisely: \\(u + W(\tau_c) = c\sqrt{b + \tau_c}\\).
 
-In this last equality, the LHS is precisely the expected payoff for \\(\tau_c\\) whose supremum is \\(\tilde{V}(u, b)\\). And, incredibly, though the RHS depends on \\(c, u, b\\); its maximum along \\(c\\) is *independent of \\(u, b\\)!* This is the value \\(\gamma\\) and with a bit of calculus (omitted for now) it can be shown that \\(\gamma\\) is the unique real solution to:
+In this last equality, the LHS is precisely the expected payoff for \\(\tau_c\\) whose supremum is \\(\tilde{V}(u, b)\\). And, incredibly, though the RHS depends on \\(c, u, b\\); its maximum along \\(c\\) for fixed \\(u, b\\) is *independent of \\(u, b\\)!* This is the value \\(\gamma\\) and with a bit of calculus (omitted for now) it can be shown that \\(\gamma\\) is the unique real solution to:
 
 $$\gamma = (1-\gamma)^2 \int_0^\infty e^{\lambda \gamma - \frac{\lambda^2}{2}} \mathop{}\!\mathrm{d}\lambda$$
 
@@ -151,40 +153,40 @@ which is about \\(0.8399\\):
 ```
 lo, hi, y = 0.0, 1.0, 1.0
 while abs(y) > 1e-9:
-    x = (lo + hi) / 2
-    y = (1 - x**2) * integrate.quad(lambda z: np.exp(z*x - z**2 / 2), 0, np.inf)[0] - x
+    c = (lo + hi) / 2
+    y = (1 - c**2) * integrate.quad(lambda z: np.exp(z*c - z**2 / 2), 0, np.inf)[0] - c
     if y > 0:
-        lo = b
+        lo = c
     else:
-        hi = b
-print(b)  # 0.8399236756922619
+        hi = c
+print(c)  # 0.8399236756922619
 ```
 
 We are almost done. To connect back to the Brownian Bridge \\(B(t)\\), recall we were originally interested in (as the limit of the discrete card-drawing process):
 
-$$ V = \sup_{T}\mathbf{E} B(T) $$
+$$ V = \sqrt{2} \sup_{T}\mathbf{E} B(T) $$
 
-where now \\(T\\) is a non-anticipating stopping time \\(0 \leq T \leq 1\\).
+where now \\(T\\) is a non-anticipating stopping time \\(0 \leq T \leq 1\\), and the extra factor \\(\sqrt{2}\\) arises from the fact that the discrete card-drawing process is normalized by \\(\sqrt{2m}\\), not \\(\sqrt{m}\\), in the passage to the limit.
 
 Note that the Brownian Bridge has the representation \\(B(t) = (1 - t)W(\frac{t}{1 - t})\\), and make the change of variable \\(t' = \frac{t}{1-t}\\), from which we see:
 
-$$ V = \sup_{T'}\mathbf{E} \frac{1}{1 + T'}W(T') = \tilde{V}(0, 1)$$
+$$ V = \sqrt{2} \sup_{T'}\mathbf{E} \frac{1}{1 + T'}W(T') = \sqrt{2} \tilde{V}(0, 1)$$
 
 Putting everything together:
 
 $$
 \begin{aligned}
-V = \tilde{V}(0, 1) & = \gamma \left( \int_0^\infty e^{-\frac{\lambda^2}{2}} \mathop{}\!\mathrm{d}\lambda \right) \left( \int_0^\infty e^{c y - \frac{y^2}{2}} \mathop{}\!\mathrm{d}y \right)^{-1} \\
-& = (1 - \gamma^2) \left( \int_0^\infty e^{-\frac{\lambda^2}{2}} \mathop{}\!\mathrm{d}\lambda \right) \\
-& = (1 - \gamma^2) \sqrt{ \frac{\pi}{2} } \\
-& \approx 0.3691
+V = \sqrt{2} \tilde{V}(0, 1) & = \sqrt{2} \gamma \left( \int_0^\infty e^{-\frac{\lambda^2}{2}} \mathop{}\!\mathrm{d}\lambda \right) \left( \int_0^\infty e^{c y - \frac{y^2}{2}} \mathop{}\!\mathrm{d}y \right)^{-1} \\
+& = \sqrt{2} (1 - \gamma^2) \left( \int_0^\infty e^{-\frac{\lambda^2}{2}} \mathop{}\!\mathrm{d}\lambda \right) \\
+& = \sqrt{2} (1 - \gamma^2) \sqrt{ \frac{\pi}{2} } \\
+& \approx 0.522
 \end{aligned}
 $$
 
-Phew!
+Pretty neat!
 
 <br />
 
 [^1]: [Shepp, L. A. Explicit Solutions to Some Problems of Optimal Stopping. Ann. Math. Statist. 40 (1969), no. 3, 993--1010.](https://projecteuclid.org/euclid.aoms/1177697604)
 [^2]: More rigorously, we could say \\(T\\) is a stopping-time with respect to the [filtration generated by the Wiener process](https://en.wikipedia.org/wiki/Stopping_time); that is, the event \\(\{T \leq t\} \in \mathcal{F}_{t}\\) for all \\(t\geq 0\\).
-[^3]: A detailed proof is found in Sections 2 & 3 of [^1]. As Prof. Shepp mentions, the proof is similar to that of Wald's "fundamental identity", [which can be found in Section 3 here](https://projecteuclid.org/euclid.aoms/1177731235). 
+[^3]: A detailed proof is found in Sections 2 & 3 of [^1]. As Shepp mentions, the proof is similar to that of Wald's "fundamental identity", [which can be found in Section 3 here](https://projecteuclid.org/euclid.aoms/1177731235). 
