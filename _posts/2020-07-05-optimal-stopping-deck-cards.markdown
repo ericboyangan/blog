@@ -123,7 +123,7 @@ $$
 \tilde{V}(u, b) = \frac{1}{\sqrt{b}}\tilde{V}(\frac{u}{\sqrt{b}}, 1)
 $$
 
-Now, clearly \\(\tilde{V}(u, 1) \geq u\\) by considering the deterministic stopping time \\(T=0\\). Intuitively, the larger \\(u\\) is, the more difficult it is to beat this, as \\(\frac{u + W(t)} {1 + t} - u = \frac{W(t) - ut} {1 + t}\\); thus \\(\tilde{V}(u, 1) = u\\) when \\(u \geq \gamma\\) for some \\(\gamma > 0\\), associated with the optimal stopping time \\(T=0\\), i.e. deterministcally stopping immediately. It follows from (1) that stopping at \\(0\\) is also optimal for general \\(b\\) and the same \\(\gamma\\) when \\(u \geq \gamma \sqrt{b}\\), in which case we then have \\(\tilde{V}(u, b) = \frac{u}{b}\\).
+Now, clearly \\(\tilde{V}(u, 1) \geq u\\) by considering the deterministic stopping time \\(T=0\\). Intuitively, the larger \\(u\\) is, the more difficult it is to beat this, as \\(\frac{u + W(t)} {1 + t} - u = \frac{W(t) - ut} {1 + t}\\); thus \\(\tilde{V}(u, 1) = u\\) when \\(u \geq \gamma\\) for some \\(\gamma > 0\\), associated with the optimal stopping time \\(T=0\\), i.e. deterministically stopping immediately. It follows from (1) that stopping at \\(0\\) is also optimal for general \\(b\\) and the same \\(\gamma\\) when \\(u \geq \gamma \sqrt{b}\\), in which case we then have \\(\tilde{V}(u, b) = \frac{u}{b}\\).
 
 When \\(u < \gamma \sqrt{b}\\), since the Wiener process is memoryless, intuitively the optimal stopping rule for any \\(u, b\\) is to stop the first time \\(\tau\\) that \\(u + W(\tau) \geq \gamma\sqrt{b + \tau}\\), because at this time, "restarting" the Wiener process with \\(u' = u + W(\tau)\\) and \\(b' = b + \tau\\) gives the criteria we have determined above.
 

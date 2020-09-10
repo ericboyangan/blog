@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linear regression, the normal equations, and ridge regression"
+title: "Linear regression, the normal equation, and ridge regression"
 date: 2020-09-05 20:00:00 -0800
 categories: math
 comments: true
