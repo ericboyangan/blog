@@ -10,9 +10,6 @@ In the midst of this calamitous year I was lucky to find some respite in the fol
 A standard deck of cards with \\(m=26\\) black and red cards each is shuffled perfectly, and you are offered a game where you may draw cards one at a time without replacement until you choose to stop, or no more cards remain. Each black card drawn earns you $1, whereas each red card drawn loses you $1.
 
 What is the value of this game, played optimally? What about in the limit as \\(m\rightarrow\infty\\)?
-<br />
-
-As it turns out, the mathematics involved in this problem are well known - for instance, they were worked out explicitly by the late Professor Larry Shepp in 1969[^1]. In this post, I'll share my notes while trying to follow along!
 
 # An empirical result
 First, let's try to compute some empirical results for fixed, finite \\(m\\).
@@ -66,7 +63,7 @@ so that we may guess that in the limit:
 $$\lim_{m\rightarrow\infty}\frac{V(m, m)}{\sqrt{m}} = V \approx 0.52$$
 
 # A sketched proof
-In the rest of this post, we'll present a rough proof (and determine the precise value of \\(V\\)).
+As it turns out, the mathematics involved in this problem are pretty well known - for instance, they were worked out explicitly by the late Professor Larry Shepp in 1969[^1]. In this post, I'll share my notes while trying to follow along!
 
 #### The Brownian Bridge
 First, we must invoke the stochastic process known as the [Brownian Bridge](https://en.wikipedia.org/wiki/Brownian_bridge), which is loosely the [standard Wiener process](https://en.wikipedia.org/wiki/Wiener_process) "tied down" to be 0 at both \\(t=0\\) and \\(t=1\\). That is, with \\(W(t), t\geq0\\) the standard Wiener process with independent normal increments \\(W(t) - W(s) \sim \mathcal{N}(0, t-s)\\), define the standard Brownian Bridge \\(B(t), t\in[0, 1]\\) to be the unique Gaussian process with mean \\(\mathop{\mathbf{E}}B(t) = 0\\) and covariance \\(\mathbf{Cov}[B(s),B(t)] = s(1- t)\\) for \\(s \leq t\\).

@@ -52,10 +52,7 @@
 
 <p>A standard deck of cards with \(m=26\) black and red cards each is shuffled perfectly, and you are offered a game where you may draw cards one at a time without replacement until you choose to stop, or no more cards remain. Each black card drawn earns you $1, whereas each red card drawn loses you $1.</p>
 
-<p>What is the value of this game, played optimally? What about in the limit as \(m\rightarrow\infty\)?
-<br /></p>
-
-<p>As it turns out, the mathematics involved in this problem are well known - for instance, they were worked out explicitly by the late Professor Larry Shepp in 1969<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>. In this post, I’ll share my notes while trying to follow along!</p>
+<p>What is the value of this game, played optimally? What about in the limit as \(m\rightarrow\infty\)?</p>
 
 <h1 id="an-empirical-result">An empirical result</h1>
 <p>First, let’s try to compute some empirical results for fixed, finite \(m\).</p>
@@ -116,7 +113,7 @@ c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
 M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9300000000000002em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mord">2</span></span></span></span></span>
 
 <h1 id="a-sketched-proof">A sketched proof</h1>
-<p>In the rest of this post, we’ll present a rough proof (and determine the precise value of \(V\)).</p>
+<p>As it turns out, the mathematics involved in this problem are pretty well known - for instance, they were worked out explicitly by the late Professor Larry Shepp in 1969<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>. In this post, I’ll share my notes while trying to follow along!</p>
 
 <h4 id="the-brownian-bridge">The Brownian Bridge</h4>
 <p>First, we must invoke the stochastic process known as the <a href="https://en.wikipedia.org/wiki/Brownian_bridge">Brownian Bridge</a>, which is loosely the <a href="https://en.wikipedia.org/wiki/Wiener_process">standard Wiener process</a> “tied down” to be 0 at both \(t=0\) and \(t=1\). That is, with \(W(t), t\geq0\) the standard Wiener process with independent normal increments \(W(t) - W(s) \sim \mathcal{N}(0, t-s)\), define the standard Brownian Bridge \(B(t), t\in[0, 1]\) to be the unique Gaussian process with mean \(\mathop{\mathbf{E}}B(t) = 0\) and covariance \(\mathbf{Cov}[B(s),B(t)] = s(1- t)\) for \(s \leq t\).</p>
